@@ -25,13 +25,19 @@
             
                 <p:layoutUnit position="center">
                     <h:outputText value="Numero Semana Registro: "/>
-                    <p:inputText id="NumeroSemanaRegistro" /><br/>
+                    <p:inputText id="numeroSemanaRegistro" /><br/>
                     
                     <p:outputLabel for="semanaDeRegistro" value="Semana De Registro: "/>
-                    <p:calendar id="semanaDeRegistro" value="#{registroSemanalLevanteVista.semanaDeRegistro}" locale="de" navigator="true" pattern="yyyy-MMM-dd" />
+                    <p:calendar id="semanaDeRegistro" value="#{registroSemanalLevanteVista.semanaDeRegistro}" locale="de" navigator="true" pattern="yyyy-MMM-dd" /> <br/>
                     
                     <p:outputLabel for="semanaARegistro" value="Semana A Registro: "/>
-                    <p:calendar id="semanaARegistro" value="#{registroSemanalLevanteVista.semanaARegistro}" locale="de" navigator="true" pattern="yyyy-MMM-dd" />
+                    <p:calendar id="semanaARegistro" value="#{registroSemanalLevanteVista.semanaARegistro}" locale="de" navigator="true" pattern="yyyy-MMM-dd" /> <br/>
+                    
+                    <h:outputLabel value="Codigo Tipo levante"/>
+                    <p:inputText value="FK" id="codigoTipoLevante"/><br/>
+                    
+                    <h:outputText value
+                    
                     
                 </p:layoutUnit>
 
