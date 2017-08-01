@@ -6,6 +6,7 @@
 package logica;
 
 import javax.ejb.Local;
+import modelo.Usuario;
 
 /**
  *
@@ -13,5 +14,5 @@ import javax.ejb.Local;
  */
 @Local
 public interface UsuarioLogicaLocal {
-    
+    public Usuario ingresar_usuario(Long documento, String clave) throws Exception;
 }
