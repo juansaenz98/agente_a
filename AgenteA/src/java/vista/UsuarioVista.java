@@ -5,6 +5,7 @@
  */
 package vista;
 
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -96,6 +97,20 @@ public class UsuarioVista {
         }
         
         
+    }
+    
+    public void cerrar_sesion(){
+        try {
+            FacesContext context = FacesContext.getCurrentInstance();
+            ExternalContext extContext = context.getExternalContext();
+            extContext.getSessionMap().remove("datos");
+            String url = extContext.encodeActionURL(
+                    context.getApplication().getViewHandler()
+                            .getActionURL(context, "/index.xhtml"));
+            extContext.redirect(url);
+        } catch (IOException ex) {
+            Logger.getLogger(UsuarioVista.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }
