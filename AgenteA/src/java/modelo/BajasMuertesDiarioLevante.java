@@ -14,12 +14,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -50,6 +52,10 @@ public class BajasMuertesDiarioLevante implements Serializable {
     @Column(name = "horas_registro_bajas")
     @Temporal(TemporalType.TIME)
     private Date horasRegistroBajas;
+    @Lob
+    @Size(max = 65535)
+    @Column(name = "observaciones_bajas")
+    private String observacionesBajas;
     @JoinColumn(name = "codigo_usuario_fk", referencedColumnName = "codigo_usuario")
     @ManyToOne
     private Usuario codigoUsuarioFk;
@@ -94,6 +100,14 @@ public class BajasMuertesDiarioLevante implements Serializable {
 
     public void setHorasRegistroBajas(Date horasRegistroBajas) {
         this.horasRegistroBajas = horasRegistroBajas;
+    }
+
+    public String getObservacionesBajas() {
+        return observacionesBajas;
+    }
+
+    public void setObservacionesBajas(String observacionesBajas) {
+        this.observacionesBajas = observacionesBajas;
     }
 
     public Usuario getCodigoUsuarioFk() {

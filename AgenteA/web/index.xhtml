@@ -16,7 +16,31 @@
         <h:body>
             <p:layout fullPage="true">
                 <p:layoutUnit position="center">
-                    Welcome to PrimeFaces
+                    <h:form id="formLogin">  
+                <p:panel id="panel">                    
+                    <div align="center"> 
+                        <p:messages showDetail="true" /> 
+                        <p:panelGrid id="pnlCoordinador" columns="2"> 
+                            <f:facet name="header">  
+                                Ingreso de Usuarios  
+                            </f:facet>         
+                               
+                            <h:outputText value="Usuario:"/>
+                            <p:inputText id="txtUsuario" binding="#{usuarioVista.txtDocumento}"  />
+
+                            <h:outputText value="Contraseña:"/>
+                            <p:password id="passUsuario" binding="#{usuarioVista.txtClave}" /> 
+
+                            <f:facet name="footer"> 
+                                <div align="center"> 
+                                    <p:commandButton id="btnIngresar" action="#{usuarioVista.ingresar()}" value="Ingresar" update="panel" />  
+                                </div>
+                            </f:facet>  
+                        </p:panelGrid> 
+                        <h:link value="Regresar a GEPAD" outcome="/index" style="color: #168216; font-weight: bold; font-size: 16pt;"  />                       
+                    </div>   
+                </p:panel>
+            </h:form>
                 </p:layoutUnit>
             </p:layout>
         </h:body>

@@ -29,7 +29,7 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
     public UsuarioFacade() {
         super(Usuario.class);
     }
-
+    
     @Override
     public Usuario findxDocumento(Long documento) {
         String consulta = "select u from Usuario u where u.documentoUsuario = "

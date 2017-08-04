@@ -40,7 +40,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "LoteLevante.findByCodigoLoteLevante", query = "SELECT l FROM LoteLevante l WHERE l.codigoLoteLevante = :codigoLoteLevante"),
     @NamedQuery(name = "LoteLevante.findByFechaNacimiento", query = "SELECT l FROM LoteLevante l WHERE l.fechaNacimiento = :fechaNacimiento"),
     @NamedQuery(name = "LoteLevante.findByNumeroPollasFinalLote", query = "SELECT l FROM LoteLevante l WHERE l.numeroPollasFinalLote = :numeroPollasFinalLote"),
-    @NamedQuery(name = "LoteLevante.findByTotalBajasMuertesLotePorcentajeMortalidadLoteLevante", query = "SELECT l FROM LoteLevante l WHERE l.totalBajasMuertesLotePorcentajeMortalidadLoteLevante = :totalBajasMuertesLotePorcentajeMortalidadLoteLevante"),
+    @NamedQuery(name = "LoteLevante.findByPorcentajeMortalidadLoteLevante", query = "SELECT l FROM LoteLevante l WHERE l.porcentajeMortalidadLoteLevante = :porcentajeMortalidadLoteLevante"),
     @NamedQuery(name = "LoteLevante.findByCostoTotalSanidadLote", query = "SELECT l FROM LoteLevante l WHERE l.costoTotalSanidadLote = :costoTotalSanidadLote"),
     @NamedQuery(name = "LoteLevante.findByTotalCostoVariableLote", query = "SELECT l FROM LoteLevante l WHERE l.totalCostoVariableLote = :totalCostoVariableLote"),
     @NamedQuery(name = "LoteLevante.findByNumeroPollasIniciarLote", query = "SELECT l FROM LoteLevante l WHERE l.numeroPollasIniciarLote = :numeroPollasIniciarLote"),
@@ -61,8 +61,8 @@ public class LoteLevante implements Serializable {
     @Column(name = "numero_pollas_final_lote")
     private Integer numeroPollasFinalLote;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "total_bajas_muertes_lote_porcentaje_mortalidad_lote_levante")
-    private Double totalBajasMuertesLotePorcentajeMortalidadLoteLevante;
+    @Column(name = "porcentaje_mortalidad_lote_levante")
+    private Double porcentajeMortalidadLoteLevante;
     @Column(name = "costo_total_sanidad_lote")
     private Integer costoTotalSanidadLote;
     @Column(name = "total_costo_variable_lote")
@@ -77,12 +77,16 @@ public class LoteLevante implements Serializable {
     private List<LotePonedoras> lotePonedorasList;
     @OneToMany(mappedBy = "numeroLoteFk")
     private List<GuiaVacunacionLoteLevante> guiaVacunacionLoteLevanteList;
+    @OneToMany(mappedBy = "numeroLote")
+    private List<AsignacionLoteLevante> asignacionLoteLevanteList;
     @JoinColumn(name = "numero_galpon_fk", referencedColumnName = "numero_galpon")
     @ManyToOne
     private Galpon numeroGalponFk;
     @JoinColumn(name = "codigo_raza_fk", referencedColumnName = "codigo_raza")
     @ManyToOne
     private Raza codigoRazaFk;
+    @OneToMany(mappedBy = "numeroLoteFk")
+    private List<RegistroSemanalLevante> registroSemanalLevanteList;
 
     public LoteLevante() {
     }
@@ -123,12 +127,12 @@ public class LoteLevante implements Serializable {
         this.numeroPollasFinalLote = numeroPollasFinalLote;
     }
 
-    public Double getTotalBajasMuertesLotePorcentajeMortalidadLoteLevante() {
-        return totalBajasMuertesLotePorcentajeMortalidadLoteLevante;
+    public Double getPorcentajeMortalidadLoteLevante() {
+        return porcentajeMortalidadLoteLevante;
     }
 
-    public void setTotalBajasMuertesLotePorcentajeMortalidadLoteLevante(Double totalBajasMuertesLotePorcentajeMortalidadLoteLevante) {
-        this.totalBajasMuertesLotePorcentajeMortalidadLoteLevante = totalBajasMuertesLotePorcentajeMortalidadLoteLevante;
+    public void setPorcentajeMortalidadLoteLevante(Double porcentajeMortalidadLoteLevante) {
+        this.porcentajeMortalidadLoteLevante = porcentajeMortalidadLoteLevante;
     }
 
     public Integer getCostoTotalSanidadLote() {
@@ -190,6 +194,15 @@ public class LoteLevante implements Serializable {
         this.guiaVacunacionLoteLevanteList = guiaVacunacionLoteLevanteList;
     }
 
+    @XmlTransient
+    public List<AsignacionLoteLevante> getAsignacionLoteLevanteList() {
+        return asignacionLoteLevanteList;
+    }
+
+    public void setAsignacionLoteLevanteList(List<AsignacionLoteLevante> asignacionLoteLevanteList) {
+        this.asignacionLoteLevanteList = asignacionLoteLevanteList;
+    }
+
     public Galpon getNumeroGalponFk() {
         return numeroGalponFk;
     }
@@ -204,6 +217,15 @@ public class LoteLevante implements Serializable {
 
     public void setCodigoRazaFk(Raza codigoRazaFk) {
         this.codigoRazaFk = codigoRazaFk;
+    }
+
+    @XmlTransient
+    public List<RegistroSemanalLevante> getRegistroSemanalLevanteList() {
+        return registroSemanalLevanteList;
+    }
+
+    public void setRegistroSemanalLevanteList(List<RegistroSemanalLevante> registroSemanalLevanteList) {
+        this.registroSemanalLevanteList = registroSemanalLevanteList;
     }
 
     @Override

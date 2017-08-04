@@ -45,13 +45,13 @@ public class loteEngordeLogica implements loteEngordeLogicaLocal {
         if (objLote == null) {
             throw new Exception("todos lso campos son obligatorios, no se puede realizar el registro");
         }
-        if (objLote.getNumeroGalpoFk()== null) {
+        if (objLote.getNumeroGalponFk()== null) {
             throw new Exception("debe de elegir un galpón, no se puede realizar el registro");
         }
         if (objLote.getCodigoRazaFk()==null) {
             throw new Exception("debe de elegir una raza, no se puede realizar el registro");
         }
-        Galpon objGalpon = galponDAO.find(objLote.getNumeroGalpoFk().getNumeroGalpon());
+        Galpon objGalpon = galponDAO.find(objLote.getNumeroGalponFk().getNumeroGalpon());
         if (objGalpon == null) {
             throw new Exception("el galpón elegido no esta registrado, no se puede realizar el registro");
         }
@@ -68,13 +68,13 @@ public class loteEngordeLogica implements loteEngordeLogicaLocal {
         if (objLote == null) {
             throw new Exception("todos lso campos son obligatorios, no se puede realizar la modificación");
         }
-        if (objLote.getNumeroGalpoFk()== null) {
+        if (objLote.getNumeroGalponFk()== null) {
             throw new Exception("debe de elegir un galpón, no se puede realizar la modificación");
         }
         if (objLote.getCodigoRazaFk()==null) {
             throw new Exception("debe de elegir una raza, no se puede realizar la modificación");
         }
-        Galpon objGalpon = galponDAO.find(objLote.getNumeroGalpoFk().getNumeroGalpon());
+        Galpon objGalpon = galponDAO.find(objLote.getNumeroGalponFk().getNumeroGalpon());
         if (objGalpon == null) {
             throw new Exception("el galpón elegido no esta registrado, no se puede realizar la modificación");
         }

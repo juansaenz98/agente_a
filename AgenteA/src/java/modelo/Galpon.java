@@ -45,7 +45,7 @@ public class Galpon implements Serializable {
     private List<LotePonedoras> lotePonedorasList;
     @OneToMany(mappedBy = "numeroGalponFk")
     private List<LoteLevante> loteLevanteList;
-    @OneToMany(mappedBy = "numeroGalpoFk")
+    @OneToMany(mappedBy = "numeroGalponFk")
     private List<LoteEngorde> loteEngordeList;
 
     public Galpon() {

@@ -16,6 +16,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -48,6 +49,8 @@ public class Enfermedad implements Serializable {
         @JoinColumn(name = "codigo_vacuna", referencedColumnName = "codigo_vacuna")})
     @ManyToMany
     private List<Vacuna> vacunaList;
+    @OneToMany(mappedBy = "codigoEnfermedad")
+    private List<GuiaVacunacionLoteLevante> guiaVacunacionLoteLevanteList;
 
     public Enfermedad() {
     }
@@ -79,6 +82,15 @@ public class Enfermedad implements Serializable {
 
     public void setVacunaList(List<Vacuna> vacunaList) {
         this.vacunaList = vacunaList;
+    }
+
+    @XmlTransient
+    public List<GuiaVacunacionLoteLevante> getGuiaVacunacionLoteLevanteList() {
+        return guiaVacunacionLoteLevanteList;
+    }
+
+    public void setGuiaVacunacionLoteLevanteList(List<GuiaVacunacionLoteLevante> guiaVacunacionLoteLevanteList) {
+        this.guiaVacunacionLoteLevanteList = guiaVacunacionLoteLevanteList;
     }
 
     @Override

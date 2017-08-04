@@ -81,6 +81,8 @@ public class Usuario implements Serializable {
     private List<BajasMuertesDiarioLevante> bajasMuertesDiarioLevanteList;
     @OneToMany(mappedBy = "codigoUsuarioFk")
     private List<SacrifioVentaEngorde> sacrifioVentaEngordeList;
+    @OneToMany(mappedBy = "codigoUsuario")
+    private List<AsignacionLoteLevante> asignacionLoteLevanteList;
     @OneToMany(mappedBy = "codigoUsuarioFk")
     private List<BajasMuertesDiarioEngorde> bajasMuertesDiarioEngordeList;
     @OneToMany(mappedBy = "codigoUsuario")
@@ -235,6 +237,15 @@ public class Usuario implements Serializable {
 
     public void setSacrifioVentaEngordeList(List<SacrifioVentaEngorde> sacrifioVentaEngordeList) {
         this.sacrifioVentaEngordeList = sacrifioVentaEngordeList;
+    }
+
+    @XmlTransient
+    public List<AsignacionLoteLevante> getAsignacionLoteLevanteList() {
+        return asignacionLoteLevanteList;
+    }
+
+    public void setAsignacionLoteLevanteList(List<AsignacionLoteLevante> asignacionLoteLevanteList) {
+        this.asignacionLoteLevanteList = asignacionLoteLevanteList;
     }
 
     @XmlTransient

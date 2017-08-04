@@ -88,12 +88,12 @@ public class RegistroSemanalLevante implements Serializable {
     private List<ConsumoAlimentoDiarioLevante> consumoAlimentoDiarioLevanteList;
     @OneToMany(mappedBy = "codigoRegistroLevanteFk")
     private List<BajasMuertesDiarioLevante> bajasMuertesDiarioLevanteList;
-    @JoinColumn(name = "numero_lote_fk", referencedColumnName = "numero_lote_engorde")
-    @ManyToOne
-    private LoteEngorde numeroLoteFk;
     @JoinColumn(name = "codigo_tipo_alimento_fk", referencedColumnName = "codigo_tipo_alimento")
     @ManyToOne
     private TipoAlimento codigoTipoAlimentoFk;
+    @JoinColumn(name = "numero_lote_fk", referencedColumnName = "numero_lote")
+    @ManyToOne
+    private LoteLevante numeroLoteFk;
 
     public RegistroSemanalLevante() {
     }
@@ -224,20 +224,20 @@ public class RegistroSemanalLevante implements Serializable {
         this.bajasMuertesDiarioLevanteList = bajasMuertesDiarioLevanteList;
     }
 
-    public LoteEngorde getNumeroLoteFk() {
-        return numeroLoteFk;
-    }
-
-    public void setNumeroLoteFk(LoteEngorde numeroLoteFk) {
-        this.numeroLoteFk = numeroLoteFk;
-    }
-
     public TipoAlimento getCodigoTipoAlimentoFk() {
         return codigoTipoAlimentoFk;
     }
 
     public void setCodigoTipoAlimentoFk(TipoAlimento codigoTipoAlimentoFk) {
         this.codigoTipoAlimentoFk = codigoTipoAlimentoFk;
+    }
+
+    public LoteLevante getNumeroLoteFk() {
+        return numeroLoteFk;
+    }
+
+    public void setNumeroLoteFk(LoteLevante numeroLoteFk) {
+        this.numeroLoteFk = numeroLoteFk;
     }
 
     @Override

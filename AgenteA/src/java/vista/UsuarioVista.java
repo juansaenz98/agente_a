@@ -87,6 +87,9 @@ public class UsuarioVista {
             }
             extContext.getSessionMap().put("datos", usrLogueado);
             extContext.redirect(url);
+        }catch(NumberFormatException e){
+            FacesContext.getCurrentInstance().addMessage(null, 
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error","El documento debe ser numérico"));
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null, 
                     new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error",ex.getMessage()));

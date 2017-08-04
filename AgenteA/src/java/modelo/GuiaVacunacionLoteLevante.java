@@ -56,6 +56,9 @@ public class GuiaVacunacionLoteLevante implements Serializable {
     private Double cantidadVacunacion;
     @Column(name = "costo_vacunacion")
     private Integer costoVacunacion;
+    @JoinColumn(name = "codigo_enfermedad", referencedColumnName = "codigo_enfermedad")
+    @ManyToOne
+    private Enfermedad codigoEnfermedad;
     @JoinColumn(name = "numero_lote_fk", referencedColumnName = "numero_lote")
     @ManyToOne
     private LoteLevante numeroLoteFk;
@@ -119,6 +122,14 @@ public class GuiaVacunacionLoteLevante implements Serializable {
 
     public void setCostoVacunacion(Integer costoVacunacion) {
         this.costoVacunacion = costoVacunacion;
+    }
+
+    public Enfermedad getCodigoEnfermedad() {
+        return codigoEnfermedad;
+    }
+
+    public void setCodigoEnfermedad(Enfermedad codigoEnfermedad) {
+        this.codigoEnfermedad = codigoEnfermedad;
     }
 
     public LoteLevante getNumeroLoteFk() {

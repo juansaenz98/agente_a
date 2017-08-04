@@ -93,16 +93,14 @@ public class LoteEngorde implements Serializable {
     private List<SacrifioVentaEngorde> sacrifioVentaEngordeList;
     @OneToMany(mappedBy = "numeroLoteEngorde")
     private List<AsignacionLoteEngorde> asignacionLoteEngordeList;
-    @JoinColumn(name = "numero_galpo_fk", referencedColumnName = "numero_galpon")
+    @JoinColumn(name = "numero_galpon_fk", referencedColumnName = "numero_galpon")
     @ManyToOne
-    private Galpon numeroGalpoFk;
+    private Galpon numeroGalponFk;
     @JoinColumn(name = "codigo_raza_fk", referencedColumnName = "codigo_raza")
     @ManyToOne
     private Raza codigoRazaFk;
     @OneToMany(mappedBy = "numeroLoteEngorde")
     private List<VitaminasEngorde> vitaminasEngordeList;
-    @OneToMany(mappedBy = "numeroLoteFk")
-    private List<RegistroSemanalLevante> registroSemanalLevanteList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "numeroLoteEngordeFk")
     private List<RegistroSemanalEngorde> registroSemanalEngordeList;
 
@@ -259,12 +257,12 @@ public class LoteEngorde implements Serializable {
         this.asignacionLoteEngordeList = asignacionLoteEngordeList;
     }
 
-    public Galpon getNumeroGalpoFk() {
-        return numeroGalpoFk;
+    public Galpon getNumeroGalponFk() {
+        return numeroGalponFk;
     }
 
-    public void setNumeroGalpoFk(Galpon numeroGalpoFk) {
-        this.numeroGalpoFk = numeroGalpoFk;
+    public void setNumeroGalponFk(Galpon numeroGalponFk) {
+        this.numeroGalponFk = numeroGalponFk;
     }
 
     public Raza getCodigoRazaFk() {
@@ -282,15 +280,6 @@ public class LoteEngorde implements Serializable {
 
     public void setVitaminasEngordeList(List<VitaminasEngorde> vitaminasEngordeList) {
         this.vitaminasEngordeList = vitaminasEngordeList;
-    }
-
-    @XmlTransient
-    public List<RegistroSemanalLevante> getRegistroSemanalLevanteList() {
-        return registroSemanalLevanteList;
-    }
-
-    public void setRegistroSemanalLevanteList(List<RegistroSemanalLevante> registroSemanalLevanteList) {
-        this.registroSemanalLevanteList = registroSemanalLevanteList;
     }
 
     @XmlTransient
