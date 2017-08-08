@@ -54,12 +54,15 @@ public class GuiaVacunacionLotePonedoras implements Serializable {
     @JoinColumn(name = "numero_lote_ponedoras_fk2", referencedColumnName = "numero_lote_ponedoras")
     @ManyToOne
     private LotePonedoras numeroLotePonedorasFk2;
-    @JoinColumn(name = "codigo_usuario_fk", referencedColumnName = "codigo_usuario")
-    @ManyToOne
-    private Usuario codigoUsuarioFk;
     @JoinColumn(name = "codigo_vacuna_fk", referencedColumnName = "codigo_vacuna")
     @ManyToOne
     private Vacuna codigoVacunaFk;
+    @JoinColumn(name = "codigo_usuario_fk", referencedColumnName = "codigo_usuario")
+    @ManyToOne
+    private Usuario codigoUsuarioFk;
+    @JoinColumn(name = "codigo_enfermedad_fk", referencedColumnName = "codigo_enfermedad")
+    @ManyToOne
+    private Enfermedad codigoEnfermedadFk;
 
     public GuiaVacunacionLotePonedoras() {
     }
@@ -116,6 +119,14 @@ public class GuiaVacunacionLotePonedoras implements Serializable {
         this.numeroLotePonedorasFk2 = numeroLotePonedorasFk2;
     }
 
+    public Vacuna getCodigoVacunaFk() {
+        return codigoVacunaFk;
+    }
+
+    public void setCodigoVacunaFk(Vacuna codigoVacunaFk) {
+        this.codigoVacunaFk = codigoVacunaFk;
+    }
+
     public Usuario getCodigoUsuarioFk() {
         return codigoUsuarioFk;
     }
@@ -124,12 +135,12 @@ public class GuiaVacunacionLotePonedoras implements Serializable {
         this.codigoUsuarioFk = codigoUsuarioFk;
     }
 
-    public Vacuna getCodigoVacunaFk() {
-        return codigoVacunaFk;
+    public Enfermedad getCodigoEnfermedadFk() {
+        return codigoEnfermedadFk;
     }
 
-    public void setCodigoVacunaFk(Vacuna codigoVacunaFk) {
-        this.codigoVacunaFk = codigoVacunaFk;
+    public void setCodigoEnfermedadFk(Enfermedad codigoEnfermedadFk) {
+        this.codigoEnfermedadFk = codigoEnfermedadFk;
     }
 
     @Override

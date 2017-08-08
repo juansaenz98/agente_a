@@ -10,6 +10,8 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -18,7 +20,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -40,8 +41,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class VitaminasEngorde implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "codigo_vitamina")
     private Integer codigoVitamina;
     @Size(max = 100)
@@ -57,12 +58,12 @@ public class VitaminasEngorde implements Serializable {
     private Date fechaVitamina;
     @Column(name = "valor_vitamina")
     private Integer valorVitamina;
-    @JoinColumn(name = "numero_lote_engorde", referencedColumnName = "numero_lote_engorde")
-    @ManyToOne
-    private LoteEngorde numeroLoteEngorde;
     @JoinColumn(name = "codigo_usuario", referencedColumnName = "codigo_usuario")
     @ManyToOne
     private Usuario codigoUsuario;
+    @JoinColumn(name = "numero_lote_engorde", referencedColumnName = "numero_lote_engorde")
+    @ManyToOne
+    private LoteEngorde numeroLoteEngorde;
 
     public VitaminasEngorde() {
     }
@@ -119,20 +120,20 @@ public class VitaminasEngorde implements Serializable {
         this.valorVitamina = valorVitamina;
     }
 
-    public LoteEngorde getNumeroLoteEngorde() {
-        return numeroLoteEngorde;
-    }
-
-    public void setNumeroLoteEngorde(LoteEngorde numeroLoteEngorde) {
-        this.numeroLoteEngorde = numeroLoteEngorde;
-    }
-
     public Usuario getCodigoUsuario() {
         return codigoUsuario;
     }
 
     public void setCodigoUsuario(Usuario codigoUsuario) {
         this.codigoUsuario = codigoUsuario;
+    }
+
+    public LoteEngorde getNumeroLoteEngorde() {
+        return numeroLoteEngorde;
+    }
+
+    public void setNumeroLoteEngorde(LoteEngorde numeroLoteEngorde) {
+        this.numeroLoteEngorde = numeroLoteEngorde;
     }
 
     @Override

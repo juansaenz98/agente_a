@@ -70,15 +70,15 @@ public class RegistroDiarioPonedoras implements Serializable {
     private String observacionesRegistro;
     @OneToMany(mappedBy = "codigoRegistroDiarioPonedorasFk")
     private List<ReporteHuevos> reporteHuevosList;
+    @JoinColumn(name = "codigo_usuario_fk", referencedColumnName = "codigo_usuario")
+    @ManyToOne
+    private Usuario codigoUsuarioFk;
     @JoinColumn(name = "codigo_registro_ponedoras_fk", referencedColumnName = "codigo_registro_ponedoras")
     @ManyToOne
     private RegistroSemanalPonedoras codigoRegistroPonedorasFk;
     @JoinColumn(name = "codigo_tipo_alimento_fk", referencedColumnName = "codigo_tipo_alimento")
     @ManyToOne
     private TipoAlimento codigoTipoAlimentoFk;
-    @JoinColumn(name = "codigo_usuario_fk", referencedColumnName = "codigo_usuario")
-    @ManyToOne
-    private Usuario codigoUsuarioFk;
 
     public RegistroDiarioPonedoras() {
     }
@@ -160,6 +160,14 @@ public class RegistroDiarioPonedoras implements Serializable {
         this.reporteHuevosList = reporteHuevosList;
     }
 
+    public Usuario getCodigoUsuarioFk() {
+        return codigoUsuarioFk;
+    }
+
+    public void setCodigoUsuarioFk(Usuario codigoUsuarioFk) {
+        this.codigoUsuarioFk = codigoUsuarioFk;
+    }
+
     public RegistroSemanalPonedoras getCodigoRegistroPonedorasFk() {
         return codigoRegistroPonedorasFk;
     }
@@ -174,14 +182,6 @@ public class RegistroDiarioPonedoras implements Serializable {
 
     public void setCodigoTipoAlimentoFk(TipoAlimento codigoTipoAlimentoFk) {
         this.codigoTipoAlimentoFk = codigoTipoAlimentoFk;
-    }
-
-    public Usuario getCodigoUsuarioFk() {
-        return codigoUsuarioFk;
-    }
-
-    public void setCodigoUsuarioFk(Usuario codigoUsuarioFk) {
-        this.codigoUsuarioFk = codigoUsuarioFk;
     }
 
     @Override

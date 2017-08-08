@@ -10,6 +10,8 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -18,7 +20,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -44,8 +45,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class SacrifioVentaEngorde implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "codigo_sacrificio_venta")
     private Integer codigoSacrificioVenta;
     @Column(name = "edad_semana_sacrificio_venta")
@@ -71,12 +72,12 @@ public class SacrifioVentaEngorde implements Serializable {
     @Column(name = "fecha_registro_sacrificio_venta")
     @Temporal(TemporalType.DATE)
     private Date fechaRegistroSacrificioVenta;
-    @JoinColumn(name = "numero_lote_engorde_fk", referencedColumnName = "numero_lote_engorde")
-    @ManyToOne
-    private LoteEngorde numeroLoteEngordeFk;
     @JoinColumn(name = "codigo_usuario_fk", referencedColumnName = "codigo_usuario")
     @ManyToOne
     private Usuario codigoUsuarioFk;
+    @JoinColumn(name = "numero_lote_engorde_fk", referencedColumnName = "numero_lote_engorde")
+    @ManyToOne
+    private LoteEngorde numeroLoteEngordeFk;
 
     public SacrifioVentaEngorde() {
     }
@@ -165,20 +166,20 @@ public class SacrifioVentaEngorde implements Serializable {
         this.fechaRegistroSacrificioVenta = fechaRegistroSacrificioVenta;
     }
 
-    public LoteEngorde getNumeroLoteEngordeFk() {
-        return numeroLoteEngordeFk;
-    }
-
-    public void setNumeroLoteEngordeFk(LoteEngorde numeroLoteEngordeFk) {
-        this.numeroLoteEngordeFk = numeroLoteEngordeFk;
-    }
-
     public Usuario getCodigoUsuarioFk() {
         return codigoUsuarioFk;
     }
 
     public void setCodigoUsuarioFk(Usuario codigoUsuarioFk) {
         this.codigoUsuarioFk = codigoUsuarioFk;
+    }
+
+    public LoteEngorde getNumeroLoteEngordeFk() {
+        return numeroLoteEngordeFk;
+    }
+
+    public void setNumeroLoteEngordeFk(LoteEngorde numeroLoteEngordeFk) {
+        this.numeroLoteEngordeFk = numeroLoteEngordeFk;
     }
 
     @Override

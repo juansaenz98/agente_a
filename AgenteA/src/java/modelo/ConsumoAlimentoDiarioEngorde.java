@@ -51,12 +51,12 @@ public class ConsumoAlimentoDiarioEngorde implements Serializable {
     @Column(name = "hora_registro_alimento")
     @Temporal(TemporalType.TIME)
     private Date horaRegistroAlimento;
-    @JoinColumn(name = "codigo_registro_engorde_fk", referencedColumnName = "codigo_registro_engorde")
-    @ManyToOne
-    private RegistroSemanalEngorde codigoRegistroEngordeFk;
     @JoinColumn(name = "codigo_usuario_fk", referencedColumnName = "codigo_usuario")
     @ManyToOne
     private Usuario codigoUsuarioFk;
+    @JoinColumn(name = "codigo_registro_engorde_fk", referencedColumnName = "codigo_registro_engorde")
+    @ManyToOne
+    private RegistroSemanalEngorde codigoRegistroEngordeFk;
 
     public ConsumoAlimentoDiarioEngorde() {
     }
@@ -97,20 +97,20 @@ public class ConsumoAlimentoDiarioEngorde implements Serializable {
         this.horaRegistroAlimento = horaRegistroAlimento;
     }
 
-    public RegistroSemanalEngorde getCodigoRegistroEngordeFk() {
-        return codigoRegistroEngordeFk;
-    }
-
-    public void setCodigoRegistroEngordeFk(RegistroSemanalEngorde codigoRegistroEngordeFk) {
-        this.codigoRegistroEngordeFk = codigoRegistroEngordeFk;
-    }
-
     public Usuario getCodigoUsuarioFk() {
         return codigoUsuarioFk;
     }
 
     public void setCodigoUsuarioFk(Usuario codigoUsuarioFk) {
         this.codigoUsuarioFk = codigoUsuarioFk;
+    }
+
+    public RegistroSemanalEngorde getCodigoRegistroEngordeFk() {
+        return codigoRegistroEngordeFk;
+    }
+
+    public void setCodigoRegistroEngordeFk(RegistroSemanalEngorde codigoRegistroEngordeFk) {
+        this.codigoRegistroEngordeFk = codigoRegistroEngordeFk;
     }
 
     @Override

@@ -56,15 +56,15 @@ public class GuiaVacunacionLoteLevante implements Serializable {
     private Double cantidadVacunacion;
     @Column(name = "costo_vacunacion")
     private Integer costoVacunacion;
-    @JoinColumn(name = "codigo_enfermedad", referencedColumnName = "codigo_enfermedad")
-    @ManyToOne
-    private Enfermedad codigoEnfermedad;
-    @JoinColumn(name = "numero_lote_fk", referencedColumnName = "numero_lote")
-    @ManyToOne
-    private LoteLevante numeroLoteFk;
     @JoinColumn(name = "codigo_usuario_fk", referencedColumnName = "codigo_usuario")
     @ManyToOne
     private Usuario codigoUsuarioFk;
+    @JoinColumn(name = "codigo_enfermedad_fk", referencedColumnName = "codigo_enfermedad")
+    @ManyToOne
+    private Enfermedad codigoEnfermedadFk;
+    @JoinColumn(name = "numero_lote_fk", referencedColumnName = "numero_lote")
+    @ManyToOne
+    private LoteLevante numeroLoteFk;
     @JoinColumn(name = "codigo_vacuna_fk", referencedColumnName = "codigo_vacuna")
     @ManyToOne
     private Vacuna codigoVacunaFk;
@@ -124,12 +124,20 @@ public class GuiaVacunacionLoteLevante implements Serializable {
         this.costoVacunacion = costoVacunacion;
     }
 
-    public Enfermedad getCodigoEnfermedad() {
-        return codigoEnfermedad;
+    public Usuario getCodigoUsuarioFk() {
+        return codigoUsuarioFk;
     }
 
-    public void setCodigoEnfermedad(Enfermedad codigoEnfermedad) {
-        this.codigoEnfermedad = codigoEnfermedad;
+    public void setCodigoUsuarioFk(Usuario codigoUsuarioFk) {
+        this.codigoUsuarioFk = codigoUsuarioFk;
+    }
+
+    public Enfermedad getCodigoEnfermedadFk() {
+        return codigoEnfermedadFk;
+    }
+
+    public void setCodigoEnfermedadFk(Enfermedad codigoEnfermedadFk) {
+        this.codigoEnfermedadFk = codigoEnfermedadFk;
     }
 
     public LoteLevante getNumeroLoteFk() {
@@ -138,14 +146,6 @@ public class GuiaVacunacionLoteLevante implements Serializable {
 
     public void setNumeroLoteFk(LoteLevante numeroLoteFk) {
         this.numeroLoteFk = numeroLoteFk;
-    }
-
-    public Usuario getCodigoUsuarioFk() {
-        return codigoUsuarioFk;
-    }
-
-    public void setCodigoUsuarioFk(Usuario codigoUsuarioFk) {
-        this.codigoUsuarioFk = codigoUsuarioFk;
     }
 
     public Vacuna getCodigoVacunaFk() {

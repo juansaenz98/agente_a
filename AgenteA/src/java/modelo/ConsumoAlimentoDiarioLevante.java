@@ -10,6 +10,8 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -18,7 +20,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -37,8 +38,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class ConsumoAlimentoDiarioLevante implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "codigo_consumo_alimento")
     private Integer codigoConsumoAlimento;
     @Column(name = "cantidad_alimento")
@@ -49,12 +50,12 @@ public class ConsumoAlimentoDiarioLevante implements Serializable {
     @Column(name = "hora_registro_consumo")
     @Temporal(TemporalType.TIME)
     private Date horaRegistroConsumo;
-    @JoinColumn(name = "codigo_registro_levante_fk", referencedColumnName = "codigo_registro_levante")
-    @ManyToOne
-    private RegistroSemanalLevante codigoRegistroLevanteFk;
     @JoinColumn(name = "codigo_usuario_fk", referencedColumnName = "codigo_usuario")
     @ManyToOne
     private Usuario codigoUsuarioFk;
+    @JoinColumn(name = "codigo_registro_levante_fk", referencedColumnName = "codigo_registro_levante")
+    @ManyToOne
+    private RegistroSemanalLevante codigoRegistroLevanteFk;
 
     public ConsumoAlimentoDiarioLevante() {
     }
@@ -95,20 +96,20 @@ public class ConsumoAlimentoDiarioLevante implements Serializable {
         this.horaRegistroConsumo = horaRegistroConsumo;
     }
 
-    public RegistroSemanalLevante getCodigoRegistroLevanteFk() {
-        return codigoRegistroLevanteFk;
-    }
-
-    public void setCodigoRegistroLevanteFk(RegistroSemanalLevante codigoRegistroLevanteFk) {
-        this.codigoRegistroLevanteFk = codigoRegistroLevanteFk;
-    }
-
     public Usuario getCodigoUsuarioFk() {
         return codigoUsuarioFk;
     }
 
     public void setCodigoUsuarioFk(Usuario codigoUsuarioFk) {
         this.codigoUsuarioFk = codigoUsuarioFk;
+    }
+
+    public RegistroSemanalLevante getCodigoRegistroLevanteFk() {
+        return codigoRegistroLevanteFk;
+    }
+
+    public void setCodigoRegistroLevanteFk(RegistroSemanalLevante codigoRegistroLevanteFk) {
+        this.codigoRegistroLevanteFk = codigoRegistroLevanteFk;
     }
 
     @Override

@@ -56,12 +56,12 @@ public class BajasMuertesDiarioEngorde implements Serializable {
     @Size(max = 65535)
     @Column(name = "observaciones_bajas")
     private String observacionesBajas;
-    @JoinColumn(name = "codigo_registro_engorde", referencedColumnName = "codigo_registro_engorde")
-    @ManyToOne
-    private RegistroSemanalEngorde codigoRegistroEngorde;
     @JoinColumn(name = "codigo_usuario_fk", referencedColumnName = "codigo_usuario")
     @ManyToOne
     private Usuario codigoUsuarioFk;
+    @JoinColumn(name = "codigo_registro_engorde", referencedColumnName = "codigo_registro_engorde")
+    @ManyToOne
+    private RegistroSemanalEngorde codigoRegistroEngorde;
 
     public BajasMuertesDiarioEngorde() {
     }
@@ -110,20 +110,20 @@ public class BajasMuertesDiarioEngorde implements Serializable {
         this.observacionesBajas = observacionesBajas;
     }
 
-    public RegistroSemanalEngorde getCodigoRegistroEngorde() {
-        return codigoRegistroEngorde;
-    }
-
-    public void setCodigoRegistroEngorde(RegistroSemanalEngorde codigoRegistroEngorde) {
-        this.codigoRegistroEngorde = codigoRegistroEngorde;
-    }
-
     public Usuario getCodigoUsuarioFk() {
         return codigoUsuarioFk;
     }
 
     public void setCodigoUsuarioFk(Usuario codigoUsuarioFk) {
         this.codigoUsuarioFk = codigoUsuarioFk;
+    }
+
+    public RegistroSemanalEngorde getCodigoRegistroEngorde() {
+        return codigoRegistroEngorde;
+    }
+
+    public void setCodigoRegistroEngorde(RegistroSemanalEngorde codigoRegistroEngorde) {
+        this.codigoRegistroEngorde = codigoRegistroEngorde;
     }
 
     @Override

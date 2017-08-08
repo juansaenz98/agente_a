@@ -24,7 +24,7 @@ public interface UsuarioFacadeLocal {
 
     Usuario find(Object id);
     
-    Usuario findxDocumento(Long documento);
+    Usuario findxDocumento(Long documento);    
 
     List<Usuario> findAll();
 
